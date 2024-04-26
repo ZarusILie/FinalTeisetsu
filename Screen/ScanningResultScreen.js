@@ -4,7 +4,7 @@ import TopBar from "../Component/TopBar";
 // import { BarCodeScanner } from "expo-barcode-scanner";
 
 const ScanningResultScreen = ({ route, navigation }) => {
-  const { barcodeData } = route.params;
+  const { scannedData } = route.params;
   return (
     <View style={styles.container}>
       <TopBar title="Scanning Success" />
@@ -14,7 +14,7 @@ const ScanningResultScreen = ({ route, navigation }) => {
         >
           TapCash Card ID:
         </Text>
-        <Text style={{ textAlign: "center", fontSize: 20 }}>{barcodeData}</Text>
+        <Text style={{ textAlign: "center", fontSize: 20 }}>{scannedData}</Text>
       </View>
       <View
         style={{

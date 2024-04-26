@@ -27,7 +27,11 @@ const EmoneyOptionScreen = ({ navigation }) => {
               <BigCard cardText={"QR Scanning"} imagesource={imagePath1} />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("BarcodeScan")}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("NFCScan");
+            }}
+          >
             <View style={{ width: "100%" }}>
               <BigCard cardText={"NFC Tapping"} imagesource={imagePath2} />
             </View>

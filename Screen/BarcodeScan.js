@@ -9,7 +9,7 @@ const BarcodeScan = ({ navigation }) => {
   const [scanned, setScanned] = useState(false);
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    navigation.navigate("ScanResult", { barcodeData: data });
+    navigation.navigate("ScanResult", { scannedData: data });
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
   return (
