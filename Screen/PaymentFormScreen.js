@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, TextInput } from "react-native";
 import MainButton from "../Component/MainButton";
 import { TouchableOpacity } from "react-native";
 import TopBar from "../Component/TopBar";
+import AccountDataService from "../api/Services/account";
 
 const PaymentFormScreen = ({ route, navigation }) => {
   const [number, onChangeNumber] = React.useState("");
+  const [account, setAccount] = useState();
+  useEffect(() => {
+    const fetchDataAccount = async () => {
+      try {
+        const responseAccountData = await AccountDataService.get(1);
+        console.log(responseAccountData.data.data);
+        setAccount(responseAccountData.data.data);
+        console.log(account);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDataAccount();
+  }, []);
+  const { scannedData } = route.params;
   return (
     <View style={styles.container}>
       <TopBar title="Payment Detail" />
@@ -33,7 +49,7 @@ const PaymentFormScreen = ({ route, navigation }) => {
           >
             <Text style={{ color: "#626262" }}>TapCash Card ID:</Text>
             <Text style={{ color: "#005E68", fontSize: 18, fontWeight: "500" }}>
-              1234 5678 9012 3456
+              {scannedData}
             </Text>
           </View>
           <View
@@ -45,7 +61,7 @@ const PaymentFormScreen = ({ route, navigation }) => {
           >
             <Text style={{ color: "#626262" }}>Current Ballance:</Text>
             <Text style={{ color: "#005E68", fontSize: 18, fontWeight: "500" }}>
-              Rp24.000
+              Rp{account && account.tapCashBalance}
             </Text>
           </View>
         </View>

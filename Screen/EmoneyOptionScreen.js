@@ -20,7 +20,6 @@ const EmoneyOptionScreen = ({ navigation }) => {
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("BarcodeScan");
-              console.log("tejab");
             }}
           >
             <View style={{ width: "100%" }}>

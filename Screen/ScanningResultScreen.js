@@ -1,10 +1,16 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import MainButton from "../Component/MainButton";
 import TopBar from "../Component/TopBar";
+import { useEffect, useState } from "react";
 // import { BarCodeScanner } from "expo-barcode-scanner";
 
 const ScanningResultScreen = ({ route, navigation }) => {
   const { scannedData } = route.params;
+
+  const getDataHandler = () => {
+    navigation.navigate("PaymentForm", { scannedData: scannedData });
+  };
+
   return (
     <View style={styles.container}>
       <TopBar title="Scanning Success" />
@@ -27,7 +33,7 @@ const ScanningResultScreen = ({ route, navigation }) => {
           borderTopColor: "#F0F1F5",
         }}
       >
-        <TouchableOpacity onPress={() => navigation.navigate("PaymentForm")}>
+        <TouchableOpacity onPress={() => getDataHandler()}>
           <View>
             <MainButton buttontext={"Get Data"} />
           </View>
