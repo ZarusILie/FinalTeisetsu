@@ -17,7 +17,7 @@ const NFCScanScreen = ({ navigation }) => {
     try {
       await NfcManager.requestTechnology(NfcTech.Ndef);
       const tag = await NfcManager.getTag();
-      console.warn("Tag found", tag);
+      // console.warn("Tag found", tag);
       setNfcData(tag.id);
       navigation.navigate("ScanResult", { scannedData: tag.id });
     } catch (ex) {

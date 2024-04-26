@@ -6,15 +6,17 @@ import TopBar from "../Component/TopBar";
 import AccountDataService from "../api/Services/account";
 
 const PaymentFormScreen = ({ route, navigation }) => {
-  const [number, onChangeNumber] = React.useState("");
+  const [number, onChangeNumber] = useState("");
   const [account, setAccount] = useState();
   useEffect(() => {
     const fetchDataAccount = async () => {
       try {
-        const responseAccountData = await AccountDataService.get(1);
-        console.log(responseAccountData.data.data);
-        setAccount(responseAccountData.data.data);
-        console.log(account);
+        const responseAccountData = await AccountDataService.create(
+          scannedData
+        );
+        console.log(responseAccountData.data);
+        setAccount(responseAccountData.data);
+        // console.log(account);
       } catch (error) {
         console.log(error);
       }
@@ -61,7 +63,7 @@ const PaymentFormScreen = ({ route, navigation }) => {
           >
             <Text style={{ color: "#626262" }}>Current Ballance:</Text>
             <Text style={{ color: "#005E68", fontSize: 18, fontWeight: "500" }}>
-              Rp{account && account.tapCashBalance}
+              {account ? `Rp${account.tapCashBalance}` : "Loading..."}
             </Text>
           </View>
         </View>

@@ -2,7 +2,7 @@ import { apiGet } from "../http-get";
 
 const AccountDataService = {
   create(cardId) {
-    return api.get(`/card/get-card/${cardId}`);
+    return apiGet.get(`/card/get-card/${cardId}`);
   },
   get(id) {
     console.log("apiGet kepanggil");
