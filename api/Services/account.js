@@ -1,6 +1,7 @@
+import { api } from "../http-common";
 import { apiGet } from "../http-get";
 
-const AccountDataService = {
+const PaymentService = {
   create(cardId) {
     return apiGet.get(`/card/get-card/${cardId}`);
   },
@@ -8,15 +9,10 @@ const AccountDataService = {
     console.log("apiGet kepanggil");
     return apiGet.get(`/api/users/${id}`);
   },
-  edit(data, token) {
-    return ApiAuth(token).put("/api/user/edit-user", data);
-  },
-  delete(data, token) {
-    return ApiAuth(token).delete(`/api/user/delete-user`, { data });
-  },
-  changePassword(data, token) {
-    return ApiAuth(token).put("/api/user/change-password", data);
+  payment(data) {
+    console.log("api called");
+    return api.post(`/transactions/payment`, data);
   },
 };
 
-export default AccountDataService;
+export default PaymentService;

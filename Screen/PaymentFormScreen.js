@@ -6,8 +6,12 @@ import TopBar from "../Component/TopBar";
 import AccountDataService from "../api/Services/account";
 
 const PaymentFormScreen = ({ route, navigation }) => {
-  const [number, onChangeNumber] = useState("");
+  const [number, setNumber] = useState("");
   const [account, setAccount] = useState();
+  const [PaymentObj, setPaymentObj] = useState({
+    cardId: scannedData,
+    nominal: parseInt(number),
+  });
   useEffect(() => {
     const fetchDataAccount = async () => {
       try {
@@ -23,6 +27,21 @@ const PaymentFormScreen = ({ route, navigation }) => {
     };
     fetchDataAccount();
   }, []);
+
+  const handlePayment = async () => {
+    try {
+      const paymentAmount = parseFloat(number);
+      if (isNaN(paymentAmount) || paymentAmount <= 0) {
+        throw new Error("Invalid payment amount");
+      }
+      await AccountDataService.payment(PaymentObj);
+      setAccount({ ...account, tapCashBalance: newBalance });
+      navigation.navigate("Success");
+    } catch (error) {
+      console.error("Error processing payment:", error.message);
+      // Display error message to the user
+    }
+  };
   const { scannedData } = route.params;
   return (
     <View style={styles.container}>
@@ -90,14 +109,13 @@ const PaymentFormScreen = ({ route, navigation }) => {
               paddingVertical: 4,
             }}
             // style={styles.input}
-            onChangeText={onChangeNumber}
+            onChangeText={(value) => setNumber(value)}
             value={number}
             placeholder="Nominal pembayaran"
             keyboardType="numeric"
           />
         </View>
       </View>
-
       <View
         style={{
           width: "110%",
@@ -109,10 +127,11 @@ const PaymentFormScreen = ({ route, navigation }) => {
           borderTopColor: "#F0F1F5",
         }}
       >
-        <MainButton
-          buttontext={"Pay now"}
-          onPress={() => navigation.navigate("Success")}
-        />
+        <TouchableOpacity onPress={() => handlePayment()}>
+          <View>
+            <MainButton buttontext={"Pay now"} />
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

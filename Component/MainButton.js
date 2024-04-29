@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 
-const MainButton = ({buttontext}) => {
+const MainButton = ({ buttontext }) => {
   return (
     <View style={styles.button}>
       <Text style={{ fontSize: 16, color: "white" }}>{buttontext}</Text>
