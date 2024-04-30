@@ -1,8 +1,25 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import MainButton from "../Component/MainButton";
 import TopBar from "../Component/TopBar";
+import PaymentService from "../api/Services/account";
+import { useEffect, useState } from "react";
 
-const PaymentSuccessScreen = ({ navigation }) => {
+const PaymentSuccessScreen = ({ navigation, route }) => {
+  const { totalAmmount, scannedData } = route.params;
+  const [account, setAccount] = useState();
+  useEffect(() => {
+    const fetchDataAccount = async () => {
+      try {
+        const responseAccountData = await PaymentService.create(scannedData);
+        console.log(responseAccountData.data);
+        setAccount(responseAccountData.data);
+        // console.log(account);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDataAccount();
+  }, []);
   return (
     <View style={styles.container}>
       <View
@@ -42,8 +59,7 @@ const PaymentSuccessScreen = ({ navigation }) => {
               Saldo Terpotong:{" "}
             </Text>
             <Text style={[styles.textDetail, { fontWeight: 500 }]}>
-              {" "}
-              Rp.3000
+              {totalAmmount}
             </Text>
           </View>
           <View style={styles.detailContainer}>
@@ -51,17 +67,22 @@ const PaymentSuccessScreen = ({ navigation }) => {
               Sisa Saldo:{" "}
             </Text>
             <Text style={[styles.textDetail, { fontWeight: 500 }]}>
-              Rp24.000
+              {account ? `Rp${account.tapCashBalance}` : "Loading..."}
             </Text>
           </View>
         </View>
       </View>
-
-      <View style={styles.button}>
-        <Text style={{ fontSize: 18, color: "#005E68", fontWeight: "600" }}>
-          Back to home
-        </Text>
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Home");
+        }}
+      >
+        <View style={styles.button}>
+          <Text style={{ fontSize: 18, color: "#005E68", fontWeight: "600" }}>
+            Back to home
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

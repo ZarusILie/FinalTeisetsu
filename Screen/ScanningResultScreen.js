@@ -2,7 +2,6 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import MainButton from "../Component/MainButton";
 import TopBar from "../Component/TopBar";
 import { useEffect, useState } from "react";
-// import { BarCodeScanner } from "expo-barcode-scanner";
 
 const ScanningResultScreen = ({ route, navigation }) => {
   const { scannedData } = route.params;

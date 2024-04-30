@@ -10,8 +10,8 @@ const PaymentService = {
     return apiGet.get(`/api/users/${id}`);
   },
   payment(data) {
-    console.log("api called");
-    return api.post(`/transactions/payment`, data);
+    console.log("Sending payment request with data:", data);
+    return api.post(`/transaction/payment`, data);
   },
 };
 

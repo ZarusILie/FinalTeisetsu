@@ -3,21 +3,16 @@ import { StyleSheet, Text, View, Image, TextInput } from "react-native";
 import MainButton from "../Component/MainButton";
 import { TouchableOpacity } from "react-native";
 import TopBar from "../Component/TopBar";
-import AccountDataService from "../api/Services/account";
+import PaymentService from "../api/Services/account";
 
 const PaymentFormScreen = ({ route, navigation }) => {
-  const [number, setNumber] = useState("");
+  const [number, setNumber] = useState();
   const [account, setAccount] = useState();
-  const [PaymentObj, setPaymentObj] = useState({
-    cardId: scannedData,
-    nominal: parseInt(number),
-  });
+  const [PaymentObj, setPaymentObj] = useState();
   useEffect(() => {
     const fetchDataAccount = async () => {
       try {
-        const responseAccountData = await AccountDataService.create(
-          scannedData
-        );
+        const responseAccountData = await PaymentService.create(scannedData);
         console.log(responseAccountData.data);
         setAccount(responseAccountData.data);
         // console.log(account);
@@ -29,14 +24,21 @@ const PaymentFormScreen = ({ route, navigation }) => {
   }, []);
 
   const handlePayment = async () => {
+    const data = {
+      cardId: scannedData,
+      nominal: parseInt(number),
+    };
     try {
-      const paymentAmount = parseFloat(number);
+      const paymentAmount = number;
       if (isNaN(paymentAmount) || paymentAmount <= 0) {
         throw new Error("Invalid payment amount");
       }
-      await AccountDataService.payment(PaymentObj);
-      setAccount({ ...account, tapCashBalance: newBalance });
-      navigation.navigate("Success");
+      await PaymentService.payment(data);
+      // setAccount({ ...account, tapCashBalance: newBalance });
+      navigation.navigate("Success", {
+        totalAmmount: number,
+        scannedData: scannedData,
+      });
     } catch (error) {
       console.error("Error processing payment:", error.message);
       // Display error message to the user
