@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import NfcManager, { NfcTech } from "react-native-nfc-manager";
+import MainButton from "../Component/MainButton";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const NFCScanScreen = ({ navigation }) => {
   const [nfcData, setNfcData] = useState(null);
@@ -21,7 +23,7 @@ const NFCScanScreen = ({ navigation }) => {
       setNfcData(tag.id);
       navigation.navigate("ScanResult", { scannedData: tag.id });
     } catch (ex) {
-      console.warn("Oops!", ex);
+      // console.warn("Oops!", ex);
     } finally {
       NfcManager.cancelTechnologyRequest();
     }
@@ -30,7 +32,11 @@ const NFCScanScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text>NFC Scan Screen</Text>
-      <Button title="Start NFC Scan" onPress={readNdef} />
+      <TouchableOpacity onPress={() => readNdef()}>
+        <View style={{ alignItems: "center" }}>
+          <MainButton buttontext={"Scan"} />
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

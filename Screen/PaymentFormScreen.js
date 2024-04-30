@@ -130,7 +130,7 @@ const PaymentFormScreen = ({ route, navigation }) => {
         }}
       >
         <TouchableOpacity onPress={() => handlePayment()}>
-          <View>
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
             <MainButton buttontext={"Pay now"} />
           </View>
         </TouchableOpacity>

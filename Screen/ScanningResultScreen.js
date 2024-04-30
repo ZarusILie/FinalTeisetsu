@@ -33,7 +33,7 @@ const ScanningResultScreen = ({ route, navigation }) => {
         }}
       >
         <TouchableOpacity onPress={() => getDataHandler()}>
-          <View>
+          <View style={{ alignItems: "center" }}>
             <MainButton buttontext={"Get Data"} />
           </View>
         </TouchableOpacity>
