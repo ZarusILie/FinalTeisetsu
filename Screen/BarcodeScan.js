@@ -22,7 +22,11 @@ const BarcodeScan = ({ navigation }) => {
         style={StyleSheet.absoluteFillObject}
       />
       {scanned && (
-        <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
+        <TouchableOpacity onPress={() => setScanned(false)}>
+        <View style={{ alignItems: "center" }}>
+          <MainButton buttontext={"Tap to Scan Again"} />
+        </View>
+      </TouchableOpacity>
       )}
     </View>
   );
