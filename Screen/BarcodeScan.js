@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, Button } from "react-native";
+import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from "react-native";
 import MainButton from "../Component/MainButton";
 import TopBar from "../Component/TopBar";
 // import { BarCodeScanner } from "expo-barcode-scanner";
