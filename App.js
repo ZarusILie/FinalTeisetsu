@@ -4,9 +4,11 @@ import EmoneyOptionScreen from "./Screen/EmoneyOptionScreen";
 import PaymentFormScreen from "./Screen/PaymentFormScreen";
 import ScanningResultScreen from "./Screen/ScanningResultScreen";
 import PaymentSuccessScreen from "./Screen/PaymentSuccessScreen";
+import ScanningResultQrScreen from "./Screen/ScanningResultQrScreen";
+import PaymentFormQrScreen from "./Screen/PaymentFormQrScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import BarcodeScan from "./Screen/BarcodeScan";
-import NFCScanScreen from "./Screen/NFCScan";
+import NFCScanScreen from "./Screen/NfcScan";
 
 const Stack = createStackNavigator();
 
@@ -18,7 +20,9 @@ export default function App() {
         <Stack.Screen name="BarcodeScan" component={BarcodeScan} />
         <Stack.Screen name="NFCScan" component={NFCScanScreen} />
         <Stack.Screen name="ScanResult" component={ScanningResultScreen} />
+        <Stack.Screen name="ScanResultQr" component={ScanningResultQrScreen} />
         <Stack.Screen name="PaymentForm" component={PaymentFormScreen} />
+        <Stack.Screen name="PaymentQrForm" component={PaymentFormQrScreen} />
         <Stack.Screen name="Success" component={PaymentSuccessScreen} />
       </Stack.Navigator>
     </NavigationContainer>

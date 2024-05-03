@@ -13,6 +13,10 @@ const PaymentService = {
     console.log("Sending payment request with data:", data);
     return api.post(`/transaction/payment`, data);
   },
+  paymentQr(data) {
+    console.log("Sending payment request with data:", data);
+    return api.post(`/transaction/qrpayment`, data);
+  },
 };
 
 export default PaymentService;
