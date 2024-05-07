@@ -13,8 +13,8 @@ const PaymentFormScreen = ({ route, navigation }) => {
     const fetchDataAccount = async () => {
       try {
         const responseAccountData = await PaymentService.create(scannedData);
-        console.log(responseAccountData.data);
-        setAccount(responseAccountData.data);
+        console.log(responseAccountData.data.data);
+        setAccount(responseAccountData.data.data);
         // console.log(account);
       } catch (error) {
         console.log(error);
