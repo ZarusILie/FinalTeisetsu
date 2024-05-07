@@ -31,7 +31,6 @@ const TopBar = ({ title }) => {
       alignItems: "center",
       borderBottomWidth: 1,
       borderBottomColor: "#F0F1F5",
-      paddingTop: "15%",
     },
   });
   

@@ -16,25 +16,49 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={EmoneyOptionScreen} />
-        <Stack.Screen name="BarcodeScan" component={BarcodeScan} />
-        <Stack.Screen name="NFCScan" component={NFCScanScreen} />
-        <Stack.Screen name="ScanResult" component={ScanningResultScreen} />
-        <Stack.Screen name="ScanResultQr" component={ScanningResultQrScreen} />
-        <Stack.Screen name="PaymentForm" component={PaymentFormScreen} />
-        <Stack.Screen name="PaymentQrForm" component={PaymentFormQrScreen} />
-        <Stack.Screen name="Success" component={PaymentSuccessScreen} />
+        <Stack.Screen
+          name="Home"
+          component={EmoneyOptionScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="BarcodeScan"
+          component={BarcodeScan}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="NFCScan"
+          component={NFCScanScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ScanResult"
+          component={ScanningResultScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ScanResultQr"
+          component={ScanningResultQrScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PaymentForm"
+          component={PaymentFormScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PaymentQrForm"
+          component={PaymentFormQrScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Success"
+          component={PaymentSuccessScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 16,
-  },
-});
+const styles = StyleSheet.create({});
