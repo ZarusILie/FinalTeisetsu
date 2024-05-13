@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const apiGet = axios.create({
-  baseURL: "http://34.128.83.116:8080/api/v1",
+  baseURL: "https://vtapcash-run-qy6nrmuwmq-et.a.run.app/api/v1",
   headers: {
     // 'ngrok-skip-browser-warning': true,
   },

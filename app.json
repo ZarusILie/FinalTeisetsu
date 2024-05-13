@@ -36,14 +36,14 @@
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.rafterbang.NFCReader"
+      "package": "com.VirtualTapcash.NFCReader"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "9ce1e0b0-58e7-4e16-90ab-34f2d50119d1"
+        "projectId": "bece6516-e9ae-4251-8bfe-d0de8058d333"
       }
     }
   }
